@@ -1,55 +1,48 @@
 # Python
 __pycache__/
 *.py[cod]
+*$py.class
 *.pyd
 .python-version
 
 # Virtual environments
 .venv/
-.venv*/
 venv/
 env/
+ENV/
 
-# Environment variables and secrets
+# Environment variables and secrets - SABSE ZARURI
 .env
 .env.*
 !.env.example
 *.pem
 *.key
 
+# Alembic local db (agar local me sqlite use karega to)
+*.db
+*.sqlite3
+
+# Uvicorn / FastAPI uploads
+uploads/
+media/
+
 # Testing and coverage
 .pytest_cache/
 .coverage
 htmlcov/
-.tox/
-.nox/
 
 # Logs
 *.log
 
-# IDE and editor
+# IDE
 .vscode/
 .idea/
 
 # OS files
 .DS_Store
 Thumbs.db
-desktop.ini
 
-# Build artifacts
+# Build
 build/
 dist/
 *.egg-info/
-
-# Jupyter Notebook
-.ipynb_checkpoints/
-
-# Type checking and linting
-.mypy_cache/
-.pyright/
-.ruff_cache/
-
-# Temporary files
-*.tmp
-*.bak
-*.swp
