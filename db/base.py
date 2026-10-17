@@ -3,3 +3,5 @@ from sqlalchemy.orm import DeclarativeBase
 
 class Base(AsyncAttrs, DeclarativeBase):
     pass
+
+from app.auth.model import User
