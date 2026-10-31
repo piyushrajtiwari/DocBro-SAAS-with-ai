@@ -10,6 +10,11 @@ from alembic import context
 from db.base import Base
 from db.config import settings
 
+from app.auth import model as auth_model  # noqa: F401  (also registers addresses, invitation, staff)
+from app.addresses import model as addresses_model  # noqa: F401
+from app.invitation import model as invitation_model  # noqa: F401
+from app.staff import model as staff_model  # noqa: F401
+
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
 config = context.config
@@ -58,7 +63,7 @@ def run_migrations_offline() -> None:
 
 
 def do_run_migrations(connection: Connection) -> None:
-    context.configure(connection=connection, target_metadata=target_metadata,render_as_batch=True)
+    context.configure(connection=connection, target_metadata=target_metadata)
 
     with context.begin_transaction():
         context.run_migrations()

@@ -8,7 +8,7 @@ DATABASE_URL = settings.DATABASE_URL
 DIRECT_URL = settings.DIRECT_URL
 
 
-engine = create_async_engine(DATABASE_URL,echo=True, pool_pre_ping=True, future=True)
+engine = create_async_engine(DATABASE_URL,echo=True, pool_pre_ping=True, future=True,connect_args={"statement_cache_size": 0, "prepared_statement_cache_size": 0})
 async_session = async_sessionmaker(engine, expire_on_commit=False, class_=AsyncSession)
 
 
