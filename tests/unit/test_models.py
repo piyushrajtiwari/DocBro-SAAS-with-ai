@@ -16,11 +16,14 @@ def test_all_tables_registered():
     )
 
 
-def test_new_users_are_not_privileged_by_default():
+def test_new_users_defaults():
     users = Base.metadata.tables["users"]
-    for column in ("is_admin", "is_superuser", "is_verified"):
+    for column in ("is_superuser", "is_verified"):
         assert users.c[column].default.arg is False
         assert users.c[column].server_default.arg == "false"
+    # every registrant is an admin by default (product decision)
+    assert users.c["is_admin"].default.arg is True
+    assert users.c["is_admin"].server_default.arg == "true"
     assert users.c["role"].server_default.arg == "patient"
 
 

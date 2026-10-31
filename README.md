@@ -137,7 +137,7 @@ async def patients(user=Depends(require_roles(UserRole.doctor, UserRole.docbro))
 
 | Table | Purpose |
 |-------|---------|
-| `users` | Accounts, with `role`, `is_verified`, `is_admin`, `is_superuser` (all privileges default to off). |
+| `users` | Accounts, with `role`, `is_verified`, `is_admin`, `is_superuser` (`is_admin` defaults to on for every account; `is_superuser` and `is_verified` default to off). |
 | `refresh_tokens` | Hashed refresh tokens with expiry, revocation and a rotation chain. |
 | `staff` | A staff member (`user_id`) working for a doctor (`doctor_id`), with a designation. |
 | `invitation` | Role invitations with a hashed token, status and expiry. |

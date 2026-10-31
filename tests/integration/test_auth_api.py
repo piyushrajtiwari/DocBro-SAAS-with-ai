@@ -20,7 +20,7 @@ class TestRegister:
         body = resp.json()
         assert body["email"] == valid_user["email"]
         assert body["role"] == "patient"
-        assert body["is_admin"] is False
+        assert body["is_admin"] is True
         assert body["is_verified"] is False
 
     async def test_response_has_no_secrets(self, client, valid_user):
@@ -40,7 +40,7 @@ class TestRegister:
         assert resp.json()["role"] == "patient"
         user = (await db_session.scalars(select(User))).one()
         assert user.role == UserRole.patient
-        assert user.is_admin is False and user.is_superuser is False
+        assert user.is_superuser is False
 
     async def test_email_is_normalised_to_lowercase(self, client, valid_user):
         resp = await client.post("/auth/register", json={**valid_user, "email": "Test.User@EXAMPLE.com"})

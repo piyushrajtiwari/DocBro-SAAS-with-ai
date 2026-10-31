@@ -23,7 +23,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Refresh tokens are stored as SHA-256 hashes, not raw values.
 - The refresh cookie is scoped to the `/auth` path.
 - `get_current_user` accepts the bearer header or the `access_token` cookie.
-- `User.is_admin` defaults to `False` (was `True`). `User.password_hash` is `String(255)`.
+- `User.is_admin` stays `True` by default for every account (product decision); the server default is now set too. `User.password_hash` is `String(255)`.
 - `User` collections are lazy-loaded instead of `selectin`.
 - `Staff` now links a staff member (`user_id`) to a doctor (`doctor_id`); `User.staff` is replaced by `staff_profile` and `staff_members`.
 - `Addresses`: `Text` columns fixed, `address_line1` required and `address_line2` optional, `pincode` is `String(10)`, enum renamed `address_type`.

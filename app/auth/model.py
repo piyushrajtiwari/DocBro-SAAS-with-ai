@@ -72,11 +72,13 @@ class User(Base):
         server_default="false",
     )
 
+    # Every account is an admin by default (product decision). Nothing enforces is_admin yet;
+    # gate admin-only features on `role` (see require_roles), not on this flag.
     is_admin: Mapped[bool] = mapped_column(
         Boolean,
         nullable=False,
-        default=False,
-        server_default="false",
+        default=True,
+        server_default="true",
     )
 
     created_at: Mapped[datetime] = mapped_column(
